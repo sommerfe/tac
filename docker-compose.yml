@@ -1,0 +1,7 @@
+version: '3'
+services:
+  tac-back:
+    build: .
+    image: tac/back
+    # ports:
+    #   - "4200:80"
