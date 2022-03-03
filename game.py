@@ -39,15 +39,15 @@ class Game:
 
     
     def is_last_match (self):
-        if self.best_of_mode == 'BO3':
-            return self.team1_score + self.team2_score == 1
+        if self.best_of_mode == 'BO1':
+            return self.team1_score >= 1 or self.team2_score >= 1
         elif self.best_of_mode == 'BO3':
-            return self.team1_score + self.team2_score == 3
+            return self.team1_score >= 2 or self.team2_score >= 2
         elif self.best_of_mode == 'BO5':
-            return self.team1_score + self.team2_score == 5
+            return self.team1_score >= 3 or self.team2_score >= 3
         elif self.best_of_mode == 'BO7':
-            return self.team1_score + self.team2_score == 7
+            return self.team1_score >= 4 or self.team2_score >= 4
         elif self.best_of_mode == 'BO9':
-            return self.team1_score + self.team2_score == 9
+            return self.team1_score >= 5 or self.team2_score >= 5
         else:
             return False
