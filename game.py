@@ -27,10 +27,10 @@ class Game:
         elif winner == self.team2:
             self.team2_score += 1
         
-        if self.is_last_match():
-            self.evaluate_game()
+        self.evaluate_game()
 
     def evaluate_game (self):
+        if not self.is_last_match(): return
         if self.team1_score > self.team2_score:
             self.winner = self.team1
         elif self.team1_score < self.team2_score:

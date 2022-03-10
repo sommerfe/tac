@@ -4,7 +4,8 @@ from team_stats import TeamStats
 import functools
 
 def compare(team_stats1: TeamStats, team_stats2: TeamStats):
-    return team_stats1.wins - team_stats2.wins
+    # print('compare', team_stats1.team_name, team_stats2.team_name, (team_stats1.wins - team_stats1.losses) - (team_stats2.wins - team_stats2.losses))
+    return (team_stats1.wins - team_stats1.losses) - (team_stats2.wins - team_stats2.losses)
     # if team_stats1.wins > team_stats2.wins:
     #     return -1
     # elif team_stats1.wins < team_stats2.wins:
@@ -57,14 +58,13 @@ class Group:
         # pass
 
     def sort_group(self):
-        # for rule in self.rules:
-        #     self.teams.sort(key=rule.compare, reverse=True)
+        for rule in self.rules:
+            self.teams.sort(key=functools.cmp_to_key(rule.compare), reverse=True)
         # pass
         # self.teams.sort(key=compare)
         # self.teams.sort(key=lambda team: team.wins, reverse=True)
-        sorted(self.teams, key=functools.cmp_to_key(compare))
-
-
+        # sorted(self.teams, key=functools.cmp_to_key(compare))
+        # self.teams.sort(key=functools.cmp_to_key(compare), reverse=True)
 
     def __str__(self):
         start = '----------------------------------------\n'
